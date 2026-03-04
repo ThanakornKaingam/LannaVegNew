@@ -92,12 +92,12 @@ class Settings:
     def validate(self):
         if self.ENV == "prod" and not self.SECRET_KEY:
             raise ValueError("SECRET_KEY is required in production.")
-
+    
         if not self.GOOGLE_CLIENT_ID:
-            raise ValueError("GOOGLE_CLIENT_ID is empty. Check .env.dev")
-
+            raise ValueError("GOOGLE_CLIENT_ID is not set.")
+    
         if not self.GOOGLE_CLIENT_SECRET:
-            raise ValueError("GOOGLE_CLIENT_SECRET is empty. Check .env.dev")
+            raise ValueError("GOOGLE_CLIENT_SECRET is not set.")
 
 
 settings = Settings()
