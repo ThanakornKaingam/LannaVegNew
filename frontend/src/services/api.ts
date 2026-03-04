@@ -1,10 +1,11 @@
-const API_URL = "http://localhost:8000";
-console.log("API_URL =", API_URL);
+import { ENV } from "@/config/env";
+
+const API_URL = ENV.API_URL;
 
 export const apiFetch = (url: string, options: RequestInit = {}) => {
   return fetch(url, {
     ...options,
-    credentials: "include",   
+    credentials: "include",
   });
 };
 
