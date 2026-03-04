@@ -1,18 +1,26 @@
-export async function predictImage(file) {
+import { ENV } from "@/config/env";
+
+const API_URL = ENV.API_URL;
+
+export const apiFetch = (url: string, options: RequestInit = {}) => {
+  return fetch(url, {
+    ...options,
+    credentials: "include",
+  });
+};
+
+export const classifyImage = async (file: File) => {
   const formData = new FormData();
   formData.append("file", file);
 
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/predict`,
-    {
-      method: "POST",
-      body: formData,
-    }
-  );
+  const res = await apiFetch(`${API_URL}/predict`, {
+    method: "POST",
+    body: formData,
+  });
 
-  if (!response.ok) {
+  if (!res.ok) {
     throw new Error("Prediction failed");
   }
 
-  return await response.json();
-}
+  return res.json();
+};
