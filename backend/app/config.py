@@ -17,7 +17,6 @@ if ENV_PATH.exists():
     load_dotenv(dotenv_path=ENV_PATH)
     print(f"Loaded ENV from: {ENV_PATH}")
 else:
-    raise FileNotFoundError(f".env.dev not found at {ENV_PATH}")
 
 
 class Settings:
