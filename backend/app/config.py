@@ -17,6 +17,7 @@ if ENV_PATH.exists():
     load_dotenv(dotenv_path=ENV_PATH)
     print(f"Loaded ENV from: {ENV_PATH}")
 else:
+    print("No .env.dev file found, using system environment variables.")
 
 
 class Settings:
